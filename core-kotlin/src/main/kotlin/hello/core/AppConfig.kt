@@ -8,10 +8,10 @@ import hello.core.order.OrderService
 import hello.core.order.OrderServiceImpl
 
 class AppConfig {
-    fun memberService(): MemberService {
-        return MemberServiceImpl(MemoryMemberRepository())
-    }
-    fun orderService(): OrderService {
-        return OrderServiceImpl(MemoryMemberRepository(), RateDiscountPolicy())
-    }
+    fun memberService(): MemberService = MemberServiceImpl(memberRepository())
+    fun orderService(): OrderService = OrderServiceImpl(memberRepository(), rateDiscountPolicy())
+
+    private fun rateDiscountPolicy() = RateDiscountPolicy()
+
+    private fun memberRepository() = MemoryMemberRepository()
 }
