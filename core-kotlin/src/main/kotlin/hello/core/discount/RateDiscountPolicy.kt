@@ -3,12 +3,11 @@ package hello.core.discount
 import hello.core.member.Grade
 import hello.core.member.Member
 
-class FixDiscountPolicy : DiscountPolicy {
-
-    val discountFixAmount: Int = 1000
+class RateDiscountPolicy : DiscountPolicy {
+    val discountPercent = 10
     override fun discount(member: Member, price: Int): Int {
         if (member.grade === Grade.VIP) {
-            return discountFixAmount
+            return price * discountPercent / 100
         }
         return 0
     }
