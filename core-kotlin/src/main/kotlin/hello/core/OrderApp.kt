@@ -2,11 +2,12 @@ package hello.core
 
 import hello.core.member.*
 import hello.core.order.OrderService
+import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 fun main() {
-    val appConfig = AppConfig()
-    val orderService: OrderService = appConfig.orderService()
-    val memberService: MemberService = appConfig.memberService()
+    val applicationContext = AnnotationConfigApplicationContext(AppConfig::class.java)
+    val orderService: OrderService = applicationContext.getBean("orderService", OrderService::class.java)
+    val memberService: MemberService = applicationContext.getBean("memberService", MemberService::class.java)
 
     val memberId = 1L
     val member = Member(1L, "memberA", Grade.VIP)
