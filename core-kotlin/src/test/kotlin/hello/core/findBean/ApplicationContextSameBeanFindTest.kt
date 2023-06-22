@@ -7,14 +7,14 @@ import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.NoUniqueBeanDefinitionException
-import org.springframework.beans.factory.getBeansOfType
+import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
 class ApplicationContextSameBeanFindTest {
 
-    private val ac = AnnotationConfigApplicationContext(SameBeanConfig::class.java)
+    private val ac: ApplicationContext = AnnotationConfigApplicationContext(SameBeanConfig::class.java)
 
     @Test
     @DisplayName("타입으로 조회시 같은 값이 둘이면, 중복 오류가 발생한다")
