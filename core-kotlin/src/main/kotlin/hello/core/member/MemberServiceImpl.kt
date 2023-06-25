@@ -1,6 +1,11 @@
 package hello.core.member
 
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Component
+
+@Component
 class MemberServiceImpl(
+    @Autowired
     private val memberRepository: MemberRepository
 ) : MemberService {
 
