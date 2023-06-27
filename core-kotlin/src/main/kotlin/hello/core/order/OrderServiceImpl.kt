@@ -1,5 +1,6 @@
 package hello.core.order
 
+import hello.core.annotation.MainDiscountPolicy
 import hello.core.discount.DiscountPolicy
 import hello.core.member.MemberRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -10,6 +11,7 @@ class OrderServiceImpl(
     @Autowired
     private val memberRepository: MemberRepository,
     @Autowired
+    @MainDiscountPolicy
     private val discountPolicy: DiscountPolicy,
 ) : OrderService {
     override fun createOrder(memberId: Long, itemName: String, itemPrice: Int): Order {
