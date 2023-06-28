@@ -18,7 +18,8 @@ class BeanLifeCycleTest {
 
     @Configuration
     class LifeCycleConfig {
-        @Bean(initMethod = "create", destroyMethod = "close")
+        //@Bean(initMethod = "create", destroyMethod = "close")
+        @Bean
         fun networkClient(): NetworkClient {
             val networkClient = NetworkClient();
             networkClient.url = "http://hello-spring.dev"
