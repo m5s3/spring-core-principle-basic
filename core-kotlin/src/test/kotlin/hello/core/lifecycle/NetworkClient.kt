@@ -5,15 +5,15 @@ import org.springframework.beans.factory.InitializingBean
 
 class NetworkClient(
     var url: String = "",
-) : InitializingBean, DisposableBean {
+) {
 
-    override fun afterPropertiesSet() {
+    fun create() {
         println("NetworkClient.afterPropertiesSet")
         connect()
         call("초기화 연결 메세지")
     }
 
-    override fun destroy() {
+    fun close() {
         println("NetworkClient.destroy")
         disconnect()
     }
